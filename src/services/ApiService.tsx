@@ -23,7 +23,6 @@ export class ApiService {
   }
 
   async get<T>(url: string): Promise<T> {
-    console.log("Getting");
     const resp = await this.#fetchWithError(url);
     return resp.json();
   }

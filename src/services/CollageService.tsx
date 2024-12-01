@@ -22,7 +22,6 @@ export class CollageService {
   }
 
   async getImageSets(): Promise<ImageSetResponse> {
-    console.log("Calling");
     return await this.#api.get<ImageSetResponse>("/imagesets");
   }
 }

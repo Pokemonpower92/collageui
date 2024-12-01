@@ -17,7 +17,6 @@ export function useApi<T>(apiFunc: () => Promise<T>): ApiResponse<T> {
     const send = async () => {
       try {
         const resp = await apiFunc();
-        console.log(resp);
         setState({
           data: resp,
           error: null,
