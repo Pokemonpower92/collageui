@@ -6,7 +6,7 @@ const api = new ApiService("/api");
 const collageService = new CollageService(api);
 const getImageSets = () => collageService.getImageSets();
 
-export const HomePage = () => {
+const ImageSet = () => {
   const { data, error, loading } = useApi(getImageSets);
   console.log("data: ", data);
   const getContent = () => {
@@ -22,3 +22,5 @@ export const HomePage = () => {
   };
   return <>{getContent()}</>;
 };
+
+export default ImageSet;
