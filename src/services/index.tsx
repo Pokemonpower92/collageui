@@ -1,2 +1,2 @@
 export { ApiService } from "./ApiService";
-export { CollageService } from "./CollageService";
+export { ImageSetService } from "./ImageSetService";

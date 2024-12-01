@@ -14,7 +14,7 @@ export interface ImageSetResponse {
   status_code: number;
 }
 
-export class CollageService {
+export class ImageSetService {
   #api: ApiService;
 
   constructor(api: ApiService) {

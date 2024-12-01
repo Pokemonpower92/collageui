@@ -1,10 +1,10 @@
 import { useApi } from "../hooks/UseApi";
 import { ApiService } from "../services";
-import { CollageService } from "../services/CollageService";
+import { ImageSetService } from "../services/ImageSetService";
 
 const api = new ApiService("/api");
-const collageService = new CollageService(api);
-const getImageSets = () => collageService.getImageSets();
+const imageSetService = new ImageSetService(api);
+const getImageSets = () => imageSetService.getImageSets();
 
 const ImageSet = () => {
   const { data, error, loading } = useApi(getImageSets);
