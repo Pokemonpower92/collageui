@@ -1,26 +1,34 @@
-import { useApi } from "../hooks/UseApi";
-import { ApiService } from "../services";
-import { ImageSetService } from "../services/ImageSetService";
+import { ApiResponse, useApi } from "../hooks/UseApi";
 
-const api = new ApiService("/api");
-const imageSetService = new ImageSetService(api);
-const getImageSets = () => imageSetService.getImageSets();
+// The specific resource type
+interface ImageSet {
+	db_id: number;
+	id: string;
+	name: string;
+	description: string;
+	created_at: string; // or Date if you parse it
+	updated_at: string;
+}
 
 const ImageSet = () => {
-  const { data, error, loading } = useApi(getImageSets);
-  console.log("data: ", data);
-  const getContent = () => {
-    if (loading) {
-      return <p>loading...</p>;
-    }
-    if (error) {
-      return <p>Error: {error}</p>;
-    }
-    return (
-      <ul>{data?.data.map((item) => <li key={item.id}>{item.name}</li>)}</ul>
-    );
-  };
-  return <>{getContent()}</>;
+	const { result, isLoading } =
+		useApi<ApiResponse<ImageSet[]>>("/api/imagesets");
+	const getContent = () => {
+		if (isLoading) {
+			return <p>loading...</p>;
+		}
+		if (!result?.ok) {
+			return <p>Error: {result?.error}</p>;
+		}
+		return (
+			<ul>
+				{result.value.data.map((item) => (
+					<li key={item.id}>{item.name}</li>
+				))}
+			</ul>
+		);
+	};
+	return <>{getContent()}</>;
 };
 
 export default ImageSet;
