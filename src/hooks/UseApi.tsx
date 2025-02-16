@@ -1,40 +1,31 @@
+// UseApi.ts
 import { useEffect, useState } from "react";
 
-export type Result<T, E = string> =
-	| { ok: true; value: T }
-	| { ok: false; error: E };
-
-export type ApiState<T> = {
-	result: Result<T> | null;
-	isLoading: boolean;
-};
-
-// The response envelope
 export interface ApiResponse<T> {
-	status_code: number;
 	data: T;
+	statusCode: number;
 }
 
-export type RequestOptions = RequestInit & {
-	headers?: Record<string, string>;
-};
+export interface ApiState<T> {
+	isLoading: boolean;
+	error: string | null;
+	response: T | null;
+}
 
-export function useApi<T>(
-	url: string,
-	options: RequestOptions = {}
-): ApiState<T> {
+export function useApi<T>(url: string, options: RequestInit = {}): ApiState<T> {
 	const [state, setState] = useState<ApiState<T>>({
-		result: null,
 		isLoading: true,
+		error: null,
+		response: null,
 	});
 
 	useEffect(() => {
 		let mounted = true;
-		const fetchData = async () => {
-			try {
-				console.log("Attempting fetch to:", url);
-				console.log("With options:", options);
 
+		const fetchData = async () => {
+			let nextState: ApiState<T>;
+
+			try {
 				const response = await fetch(url, {
 					...options,
 					headers: {
@@ -42,31 +33,32 @@ export function useApi<T>(
 						...options.headers,
 					},
 				});
+
 				if (!response.ok) {
 					throw new Error(`HTTP error! status: ${response.status}`);
 				}
-				const result = await response.json();
-				if (mounted) {
-					setState({
-						result: { ok: true, value: result },
-						isLoading: false,
-					});
-				}
+
+				const data = await response.json();
+				nextState = {
+					response: data,
+					error: null,
+					isLoading: false,
+				};
 			} catch (error) {
-				if (mounted) {
-					setState({
-						result: {
-							ok: false,
-							error:
-								error instanceof Error
-									? error.message
-									: "An unknown error occurred",
-						},
-						isLoading: false,
-					});
-				}
+				nextState = {
+					response: null,
+					error:
+						error instanceof Error
+							? error.message
+							: "An unknown error occurred",
+					isLoading: false,
+				};
 			}
+
+			if (!mounted) return;
+			setState(nextState);
 		};
+
 		fetchData();
 		return () => {
 			mounted = false;

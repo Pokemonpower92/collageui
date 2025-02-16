@@ -1,0 +1,30 @@
+import { useImageApi } from "../../../hooks/UseImageApi";
+import { DataLoader } from "../DataLoader/DataLoader";
+import { ImageData } from "../Gallery/Gallery";
+
+type ImageCardProps = {
+	imageData: ImageData;
+};
+
+const ImageCard = ({ imageData }: ImageCardProps) => {
+	const { isLoading, error, imageUrl } = useImageApi(
+		`/api/files/${imageData.id}`
+	);
+	return (
+		<DataLoader state={{ isLoading, error, response: imageUrl }}>
+			<>
+				{imageData.name && <p>{imageData.name}</p>}
+				{imageData.description && <p>{imageData.description}</p>}
+				{imageUrl && (
+					<img
+						src={imageUrl}
+						alt={imageData.name || "Image"}
+						className="max-w-full h-auto"
+					/>
+				)}
+			</>
+		</DataLoader>
+	);
+};
+
+export default ImageCard;
