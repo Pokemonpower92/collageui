@@ -1,4 +1,5 @@
 import ImageCard from "../ImageCard/ImageCard";
+import styles from "./Gallery.module.css";
 
 export interface ImageData {
 	id: string;
@@ -13,9 +14,9 @@ type GalleryProps = {
 export const Gallery = ({ items }: GalleryProps) => {
 	return (
 		<>
-			<ul>
+			<ul className={styles.gallery}>
 				{items.map((item) => (
-					<li key={String(item)}>
+					<li className={styles.galleryItem} key={String(item.id)}>
 						<ImageCard imageData={item} />
 					</li>
 				))}
