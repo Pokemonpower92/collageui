@@ -1,5 +1,9 @@
-import { useEffect } from "react";
+import { useRef } from "react";
 import { createPortal } from "react-dom";
+import { useKeyPress } from "../../../hooks/UseKeyPress/UseKeyPress";
+import { useScrollLock } from "../../../hooks/UseScrollLock/UseScrollLock";
+import { useFocusTrap } from "../../../hooks/UseFocusTrap/UseFocusTrap";
+
 import styles from "./Modal.module.css";
 
 interface ModalProps {
@@ -17,32 +21,30 @@ export const Modal = ({
 	isOpen,
 	onClose,
 }: ModalProps) => {
-	useEffect(() => {
-		const handleEscape = (e: KeyboardEvent) => {
-			if (e.key === "Escape") onClose();
-		};
+	const modalRef = useRef<HTMLDivElement>(null);
 
-		if (isOpen) {
-			document.addEventListener("keydown", handleEscape);
-			document.body.style.overflow = "hidden";
-		}
-
-		return () => {
-			document.removeEventListener("keydown", handleEscape);
-			document.body.style.overflow = "unset";
-		};
-	}, [isOpen, onClose]);
-
-	if (!isOpen) return null;
+	useKeyPress("Escape", onClose, isOpen);
+	useScrollLock(isOpen);
+	useFocusTrap({ ref: modalRef, isActive: isOpen });
 
 	return createPortal(
-		<div className={styles.overlay} onClick={onClose}>
+		<div
+			className={`${styles.overlay} ${isOpen ? styles.visible : styles.hidden}`}
+			onClick={onClose}
+			aria-hidden={!isOpen}
+		>
 			<div
+				ref={modalRef}
 				className={`${styles.modal} ${styles[size]}`}
 				onClick={(e) => e.stopPropagation()}
+				role="dialog"
+				aria-modal="true"
+				aria-labelledby="modal-title"
 			>
 				<div className={styles.header}>
-					<h2 className={styles.title}>{title}</h2>
+					<h2 id="modal-title" className={styles.title}>
+						{title}
+					</h2>
 					<button
 						className={styles.closeButton}
 						onClick={onClose}
