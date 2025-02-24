@@ -11,14 +11,15 @@ export const useKeyPress = (
 	handler: () => void,
 	isActive = true
 ) => {
-	if (!isActive) return;
 	useEffect(() => {
 		const listener = (event: KeyboardEvent) => {
 			if (event.key === key) {
 				handler();
 			}
 		};
-		window.addEventListener("keydown", listener);
+		if (isActive) {
+			window.addEventListener("keydown", listener);
+		}
 		return () => window.removeEventListener("keydown", listener);
 	}, [key, handler]);
 };
