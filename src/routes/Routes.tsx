@@ -1,28 +1,11 @@
 import { lazy, Suspense } from "react";
-import {
-	createBrowserRouter,
-	Link,
-	Outlet,
-	RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { Navbar } from "../components/navbar/Navbar/Navbar";
 
 const Root = () => {
 	return (
 		<div className="min-h-screen">
-			<nav className="bg-slate-800 text-white p-4">
-				<div className="container mx-auto flex gap-4">
-					<Link to="/" className="hover:text-blue-300">
-						Home
-					</Link>
-					<Link to="/imagesets" className="hover:text-blue-300">
-						ImageSet
-					</Link>
-					<Link to="/collages" className="hover:text-blue-300">
-						Collage
-					</Link>
-				</div>
-			</nav>
-
+			<Navbar />
 			<main className="container mx-auto p-4">
 				<Suspense fallback={<div>Loading...</div>}>
 					<Outlet />

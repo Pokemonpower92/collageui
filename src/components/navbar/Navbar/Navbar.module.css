@@ -1,0 +1,51 @@
+.navBar {
+	width: 100%;
+	height: 4rem;
+	display: flex;
+	align-items: center;
+}
+
+.navContainer {
+	display: flex;
+	gap: 1.25rem;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+}
+
+.homeLink,
+.imageSetsLink,
+.collagesLink {
+	text-decoration: none;
+	color: inherit;
+	padding: 10px 15px;
+	border-radius: 3px;
+	transition: all 0.3s ease;
+	flex: 0 1 auto;
+	display: flex;
+	align-items: center;
+	height: 2.5rem;
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+
+/* Hover effects directly on the Link components */
+.homeLink:hover,
+.imageSetsLink:hover,
+.collagesLink:hover {
+	background-color: black;
+	color: white;
+}
+
+.rightHandLinks {
+	width: 25%;
+	max-width: 15rem;
+	margin-left: auto;
+	display: flex;
+	justify-content: space-between;
+	height: 100%;
+	align-items: center;
+}
