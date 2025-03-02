@@ -15,7 +15,7 @@ const Root = () => {
 	);
 };
 
-const Home = lazy(() => import("../pages/Home"));
+const HomePage = lazy(() => import("../pages/HomePage"));
 const ImageSetPage = lazy(() => import("../pages/ImageSetPage"));
 const CollagePage = lazy(() => import("../pages/CollagePage"));
 const NotFound = lazy(() => import("../pages/NotFound"));
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				element: <Home />,
+				element: <HomePage />,
 			},
 		],
 	},
