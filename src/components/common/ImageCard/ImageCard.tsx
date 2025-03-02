@@ -21,7 +21,7 @@ const ImageCard = ({ imageData }: ImageCardProps) => {
 					<img
 						src={imageUrl}
 						alt={imageData.name || "Image"}
-						className="max-w-full h-auto"
+						className={styles.imageCardImage}
 					/>
 				)}
 			</div>

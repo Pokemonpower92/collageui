@@ -10,10 +10,10 @@ export const Navbar = () => {
 				</Link>
 				<div className={styles.rightHandLinks}>
 					<Link to="/imagesets" className={styles.imageSetsLink}>
-						ImageSet
+						Image Sets
 					</Link>
 					<Link to="/collages" className={styles.collagesLink}>
-						Collage
+						Collages
 					</Link>
 				</div>
 			</div>

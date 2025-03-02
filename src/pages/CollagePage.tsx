@@ -1,8 +1,8 @@
+import { CollageGallery } from "../components/collage/CollageGallery/CollageGallery";
 import { DataLoader } from "../components/common/DataLoader/DataLoader";
-import { Gallery } from "../components/common/Gallery/Gallery";
 import { ApiResponse, useApi } from "../hooks/UseApi";
 
-interface Collage {
+export interface Collage {
 	db_id: number;
 	id: string;
 	name: string;
@@ -18,7 +18,7 @@ const CollagePage = () => {
 		useApi<ApiResponse<Collage[]>>("/api/collages");
 	return (
 		<DataLoader state={{ isLoading, error, response }}>
-			{response && <Gallery items={response.data} />}
+			{response && <CollageGallery items={response.data} />}
 		</DataLoader>
 	);
 };

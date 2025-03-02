@@ -21,6 +21,8 @@ export const Modal = ({
 	isOpen,
 	onClose,
 }: ModalProps) => {
+	if (!isOpen) return null;
+
 	const modalRef = useRef<HTMLDivElement>(null);
 
 	useKeyPress("Escape", onClose, isOpen);
