@@ -1,7 +1,7 @@
-import { ApiResponse, useApi } from "../../../hooks/UseApi";
-import { ImageSet } from "../../../pages/ImageSetPage";
-import { DataLoader } from "../../common/DataLoader/DataLoader";
-import { Gallery } from "../../common/Gallery/Gallery";
+import { ApiResponse, useApi } from "../../hooks/UseApi/UseApi";
+import { ImageSet } from "../../pages/ImageSetPage";
+import { DataLoader } from "../common/DataLoader/DataLoader";
+import { Gallery } from "../common/Gallery/Gallery";
 
 type ImageSetGalleryProps = {
 	imageSet: ImageSet;

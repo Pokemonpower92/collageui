@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { ApiState } from "../../../hooks/UseApi";
+import { ApiState } from "../../../hooks/UseApi/UseApi";
 
 interface DataLoaderProps<T> {
 	state: ApiState<T>;

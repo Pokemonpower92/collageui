@@ -21,13 +21,12 @@ export const Modal = ({
 	isOpen,
 	onClose,
 }: ModalProps) => {
-	if (!isOpen) return null;
-
 	const modalRef = useRef<HTMLDivElement>(null);
-
 	useKeyPress("Escape", onClose, isOpen);
 	useScrollLock(isOpen);
 	useFocusTrap({ ref: modalRef, isActive: isOpen });
+
+	if (!isOpen) return null;
 
 	return createPortal(
 		<div

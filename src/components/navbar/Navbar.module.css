@@ -1,6 +1,7 @@
 .navBar {
 	width: 100%;
 	height: 4rem;
+	margin-bottom: 1rem;
 	display: flex;
 	align-items: center;
 }
@@ -9,8 +10,8 @@
 	display: flex;
 	gap: 1.25rem;
 	padding: 0;
-	margin: 0;
 	list-style: none;
+	margin: 0;
 	width: 100%;
 	height: 100%;
 	align-items: center;
