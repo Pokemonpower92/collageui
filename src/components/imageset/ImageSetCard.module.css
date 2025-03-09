@@ -1,0 +1,16 @@
+.imageSetCardContainer {
+	background-color: lightgray;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	padding: 5px;
+	margin: auto;
+	list-style: none;
+	border-radius: 5px;
+}
+
+.imageSetName,
+.imageSetDescription,
+.imageSetButton {
+	flex: 0 0 auto;
+}

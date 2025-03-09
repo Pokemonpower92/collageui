@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import { Navbar } from "../components/navbar/Navbar/Navbar";
+import { Navbar } from "../components/navbar/Navbar";
 
 const Root = () => {
 	return (

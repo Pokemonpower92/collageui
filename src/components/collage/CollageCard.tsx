@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { ApiResponse, useApi } from "../../../hooks/UseApi";
-import { Collage } from "../../../pages/CollagePage";
-import { DataLoader } from "../../common/DataLoader/DataLoader";
-import ImageCard from "../../common/ImageCard/ImageCard";
-import { Modal } from "../../common/Modal/Modal";
+import { ApiResponse, useApi } from "../../hooks/UseApi/UseApi";
+import { Collage } from "../../pages/CollagePage";
+import { DataLoader } from "../common/DataLoader/DataLoader";
+import ImageCard from "../common/ImageCard/ImageCard";
+import { Modal } from "../common/Modal/Modal";
+
+import styles from "./CollageCard.module.css";
 
 type CollageCardProps = {
 	collage: Collage;
@@ -27,10 +29,12 @@ const CollageCard = ({ collage: collage }: CollageCardProps) => {
 	};
 
 	return (
-		<>
-			<p>{collage.name}</p>
-			<p>{collage.description}</p>
-			<button onClick={handleClick}>View Collage</button>
+		<div key={collage.id} className={styles.collageContainer}>
+			<p className={styles.collageName}>{collage.name}</p>
+			<p className={styles.collageDescription}>{collage.description}</p>
+			<button className={styles.collageButton} onClick={handleClick}>
+				View Collage
+			</button>
 			<Modal
 				isOpen={isOpen}
 				title={`${collage.name}`}
@@ -46,7 +50,7 @@ const CollageCard = ({ collage: collage }: CollageCardProps) => {
 					)}
 				</DataLoader>
 			</Modal>
-		</>
+		</div>
 	);
 };
 

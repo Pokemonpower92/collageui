@@ -1,4 +1,4 @@
-import { useImageApi } from "../../../hooks/UseImageApi";
+import { useImageApi } from "../../../hooks/UseImageApi/UseImageApi";
 import { DataLoader } from "../DataLoader/DataLoader";
 import { ImageData } from "../Gallery/Gallery";
 

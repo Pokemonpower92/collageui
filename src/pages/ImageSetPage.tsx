@@ -1,6 +1,6 @@
 import { DataLoader } from "../components/common/DataLoader/DataLoader";
-import { ImageSetCard } from "../components/imageset/ImageSetCard/ImageSetCard";
-import { ApiResponse, useApi } from "../hooks/UseApi";
+import { ImageSetItems } from "../components/imageset/ImageSetItems";
+import { ApiResponse, useApi } from "../hooks/UseApi/UseApi";
 
 export interface ImageSet {
 	db_id: number;
@@ -17,13 +17,7 @@ const ImageSetPage = () => {
 
 	return (
 		<DataLoader state={{ isLoading, error, response }}>
-			{response && (
-				<div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-					{response.data.map((imageSet) => (
-						<ImageSetCard key={imageSet.id} imageSet={imageSet} />
-					))}
-				</div>
-			)}
+			{response && <ImageSetItems imageSets={response.data} />}
 		</DataLoader>
 	);
 };

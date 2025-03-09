@@ -1,4 +1,4 @@
-.gallery {
+.collageItemsContainer {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 20px;
@@ -6,11 +6,4 @@
 	margin: 0;
 	list-style: none;
 	justify-content: space-evenly;
-}
-
-.galleryItem {
-	background-color: lightgray;
-	border-radius: 5px;
-	flex: 0 0 auto;
-	width: calc(25% - 14px);
 }
