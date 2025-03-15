@@ -17,7 +17,7 @@ export const ImageSetCard = ({ imageSet }: ImageSetCardProps) => {
 	};
 
 	return (
-		<div key={imageSet.id} className={styles.imageSetCardContainer}>
+		<div className={styles.imageSetCardContainer}>
 			<p className={styles.imageSetName}>{imageSet.name}</p>
 			<p className={styles.imageSetdescription}>{imageSet.description}</p>
 			<button className={styles.imageSetButton} onClick={handleClick}>

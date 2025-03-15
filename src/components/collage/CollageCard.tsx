@@ -29,7 +29,7 @@ const CollageCard = ({ collage: collage }: CollageCardProps) => {
 	};
 
 	return (
-		<div key={collage.id} className={styles.collageContainer}>
+		<div className={styles.collageContainer}>
 			<p className={styles.collageName}>{collage.name}</p>
 			<p className={styles.collageDescription}>{collage.description}</p>
 			<button className={styles.collageButton} onClick={handleClick}>
