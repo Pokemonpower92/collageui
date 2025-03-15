@@ -18,6 +18,7 @@ const Root = () => {
 const HomePage = lazy(() => import("../pages/HomePage"));
 const ImageSetPage = lazy(() => import("../pages/ImageSetPage"));
 const CollagePage = lazy(() => import("../pages/CollagePage"));
+const CreateCollagePage = lazy(() => import("../pages/CreateCollagePage"));
 const NotFound = lazy(() => import("../pages/NotFound"));
 
 const router = createBrowserRouter([
@@ -51,6 +52,17 @@ const router = createBrowserRouter([
 			{
 				index: true,
 				element: <CollagePage />,
+			},
+		],
+	},
+	{
+		path: "/createcollage",
+		element: <Root />,
+		errorElement: <NotFound />,
+		children: [
+			{
+				index: true,
+				element: <CreateCollagePage />,
 			},
 		],
 	},

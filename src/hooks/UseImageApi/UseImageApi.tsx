@@ -1,4 +1,3 @@
-// UseImageApi.ts
 import { useEffect, useState } from "react";
 
 export interface ImageApiState {
@@ -23,7 +22,6 @@ export function useImageApi(
 		let mounted = true;
 
 		const fetchData = async () => {
-			// Clear previous state
 			setState((prev) => ({
 				...prev,
 				isLoading: true,
@@ -76,7 +74,6 @@ export function useImageApi(
 
 		return () => {
 			mounted = false;
-			// Cleanup previous objectURL if it exists
 			setState((prev) => {
 				if (prev.imageUrl) {
 					URL.revokeObjectURL(prev.imageUrl);
@@ -86,7 +83,6 @@ export function useImageApi(
 		};
 	}, [url, JSON.stringify(options)]);
 
-	// Cleanup objectURL when component unmounts
 	useEffect(() => {
 		return () => {
 			if (state.imageUrl) {

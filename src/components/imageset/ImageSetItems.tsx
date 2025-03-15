@@ -11,7 +11,7 @@ export const ImageSetItems = ({ imageSets }: ImageSetItemsProps) => {
 	return (
 		<div className={styles.imageSetItemsContainer}>
 			{imageSets.map((item) => (
-				<ImageSetCard imageSet={item} />
+				<ImageSetCard key={item.id} imageSet={item} />
 			))}
 		</div>
 	);
